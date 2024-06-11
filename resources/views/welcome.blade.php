@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('title', 'HDC Events')
 
@@ -7,13 +7,19 @@
 
     <div class="col-md-12" id="search-container">
         <h1>Busque um evento</h1>
-        <form action="" method="post">
+        <form class="d-flex" action="/" method="get" role="search">
             <input type="text" name="search" id="search" class="form-control" placeholder="Procurar...">
         </form>
     </div>
     <div id="events-container" class="col-md-12">
-        <h2>Próximos Eventos</h2>
-        <p class="subtitle">Veja os eventos dos próximos dias</p>
+        @if ($search)
+            <h2>Buscando por: {{ $search }}</h2>
+        @else
+            <h2>Próximos Eventos</h2>
+            <p class="subtitle">Veja os eventos dos próximos dias</p>
+        @endif
+
+
         <div id="cards-container" class="row row-cols-1 row-cols-md-4 g-4">
             @foreach ($events as $event)
                 <div class="col">
@@ -28,7 +34,9 @@
                     </div>
                 </div>
             @endforeach
-            @if (count($events) == 0)
+            @if (count($events) == 0 && $search)
+                <p>Não foi possível encontrar nenhum evento com {{ $search }}! <a href="/">Ver todos!</a></p>
+            @elseif(count($events) == 0)
                 <p>Não há eventos disponíves</p>
             @endif
         </div>
