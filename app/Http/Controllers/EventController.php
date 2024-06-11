@@ -4,15 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
-use Illuminate\Http\UploadedFile;
 
 class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::all();
+        $search = request('search');
+        if ($search) {
+            $events = Event::where([
+                ['title', 'like', '%' . $search . '%']
+            ])->get();
+        } else {
+            $events = Event::all();
+        }
 
-        return view('welcome', ['events' => $events]);
+
+        return view('welcome', ['events' => $events, 'search' => $search]);
     }
 
     public function create()
