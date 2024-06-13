@@ -92,6 +92,10 @@ header {
   display: flex;
 }
 
+#events-container img {
+  max-height: 150px;
+}
+
 .card .card-date {
   font-size: 12px;
   color: #ccc;
