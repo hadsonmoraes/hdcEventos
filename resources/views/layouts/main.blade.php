@@ -70,7 +70,7 @@
     </header>
 
     @if (session('msg'))
-        <div class="alert {{ session('alert') ?? 'alert-info' }} alert-dismissible" role="alert">
+        <div class="alert {{ session('alert') ?? 'alert-info' }} alert-dismissible text-center" role="alert">
             {{ session('msg') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
