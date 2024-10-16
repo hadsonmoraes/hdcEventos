@@ -38,7 +38,7 @@
                             <a class="nav-link" href="/">Eventos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="events/create">Criar Eventos</a>
+                            <a class="nav-link" href="/events/create">Criar Eventos</a>
                         </li>
                         @auth
                             <li class="nav-item">
